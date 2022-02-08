@@ -1,13 +1,23 @@
 /**
  * Floating point
+ * Một số biểu hiện của floating point
+ * Các cách để tránh floating point: toFixed, 
+ * một số hàm Math: ceil, floor, round, trunc
  */
 function floatingPoint(){
     let a = 0.1;
     let b = 0.2;
+    console.log(a+b);
+    console.log(a*b);
+    console.log(3*a+3*b)
 
-    let c = a + b;
-    console.log(c);
-    console.log(c.toFixed(1));
+    let c = a+b;
+    console.log("toFixed: " + c.toFixed(1));
+    console.log("ceil: " + Math.ceil(c));
+    console.log("floor: " + Math.floor(c));
+    console.log("round: " + Math.round(c));
+    console.log("trunc: " + Math.ceil(c));
+
 }
 floatingPoint();
 
