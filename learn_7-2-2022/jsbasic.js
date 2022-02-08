@@ -39,11 +39,11 @@ floatingPoint();
 function compareNullAndUndefined(){
     console.log("null and undefined:");
     let a;
-    let b = null;
+    const b = null;
     console.log(a==b);
     console.log(a===b);
 
-    let c = null;
+    const c = null;
     console.log(c==b);
     console.log(c===b);
 
@@ -73,8 +73,8 @@ function compareObject(obj1, obj2) {
     Object.is(obj1, obj1);
     Object.is(obj1, obj2);
 
-    let key1 = Object.keys(obj1);
-    let key2 = Object.keys(obj2);
+    const key1 = Object.keys(obj1);
+    const key2 = Object.keys(obj2);
 
     if(key1.length!=key2.length) return false;
 
@@ -88,9 +88,9 @@ function compareObject(obj1, obj2) {
     return true;
 }
 
-let obj1 = { a:1, b:2};
-let obj2 = { a:1, b:2};
-let result = compareObject(obj1, obj2);
+const obj1 = { a:1, b:2};
+const obj2 = { a:1, b:2};
+const result = compareObject(obj1, obj2);
 console.log(result);
 console.log(JSON.stringify(obj1)==JSON.stringify(obj2));
 
@@ -124,3 +124,60 @@ function resFor(){
     console.log(str);
 }
 resFor();
+
+/**
+ * Scope: phân biệt các biến có thể truy cập ở đâu
+ * có phân chia đơn giản là global, trong block {} và trong function block {}
+ * 
+ * var, let and const
+ * var là khai báo ở bất kỳ đâu thì kể cả trong function hay if 
+ * thì ở ngoài block cũng có thể lấy được giá trị của nó.
+ * là 1 biến global mọi lúc.
+ * 
+ * let là dùng để khai báo cho biến có thể thay đổi giá trị.
+ * const là dùng để khai báo cho biến không đổi.
+ * dùng trong cùng một block thì không thể khai báo lại cùng một tên biến của let, const.
+ * const có thể cập nhập giá trị nếu là biến dạng object, array, class.
+ */
+
+function myFunction(){
+    var name = "Duong";
+}
+console.log(name);
+if(true){
+    var age = 30;
+}
+console.log(age);
+
+const a = 10;
+const b = 1;
+{
+    const a = 11;
+    //Nó lấy giá trị biến ở block ngoài nếu trong block không có biến đó
+    console.log(b);
+}
+// Nó sẽ lấy giá trị biến có tại cùng scope
+console.log(a);
+
+const array = [1,2,3,4];
+//Thêm một giá trị vào mảng array
+array.push(5);
+console.log(array);
+
+/**
+ * Closures 
+ * 1 function có thể return 1 hoặc nhiều function có trong hàm
+ * để có thể giúp dút gọn code, hay để thêm bảo mật
+ * vì sẽ chỉ có thể làm việc với 1 số hàm mà mình đưa ra.
+ */
+function addNumber(){
+    let n = 0;
+    function add(){
+        return ++n;
+    }
+    return add;
+}
+const temp = addNumber();
+console.log(temp());
+console.log(temp());
+console.log(temp());
