@@ -1,0 +1,10 @@
+Hôm nay em đã làm:
+- Tại sao cần Floating point number?
+Em đã đọc một số tài liệu và có một số cách như toFixed
+- So sánh null và undefined
+- So sánh 2 obj
+so sánh 2 obj có chỏ đến cùng ô nhớ thì bằng nhau
+- Tìm hiểu các vòng for. vòng for nào nhanh nhất.
+for in lấy key 
+for of lấy value 
+for(let i=0) là nhanh nhất
