@@ -6,7 +6,7 @@
 /**
  * Một class khai báo dạng function
  */
-function person (name, age, male) {
+function Person (name, age, male) {
     this.name = name;
     this.age = age;
     this.male = male;
@@ -21,7 +21,7 @@ function person (name, age, male) {
 /**
  * new person để tạo một đối tượng mới
  */
-const per1 = new person('p1', 25, true);
+const per1 = new Person('p1', 25, true);
 console.log(per1.getInfo());
 per1.setName('person');
 console.log(per1.getInfo());
@@ -36,6 +36,7 @@ const human = {
         return this.name + " " + this.age;
     }
 }
+
 console.log(human.getInfo());
 human.location = "hn";
 human.getInfo = function () {
@@ -44,16 +45,17 @@ human.getInfo = function () {
 console.log(human.getInfo());
 
 //Hoặc cũng có thể là:
-const hs = new Object();
-hs.setAll = function(name, age, location){
+const HocSinh = new Object();
+HocSinh.setAll = function(name, age, location){
     this.name = name;
     this.age = age;
     this.location = location;
 }
-hs.getAll = function(){
+HocSinh.getAll = function(){
     return this.name + " " + this.age + " " + this.location;
 }
-const hs1 = hs;
+
+const hs1 = HocSinh;
 hs1.setAll(
     'hs1', 30, 'hg'
 )
@@ -64,19 +66,19 @@ console.log(hs1.getAll());
  */
 
 //Kế thừa function person
-function personHigh(name, age, male, height){
-    person.call(this, name, age, male);
+function PersonHigh(name, age, male, height){
+    Person.call(this, name, age, male);
     this.height = height;
 }
 
 // kế thừa prototype
-personHigh.prototype = Object.create(person.prototype);
-personHigh.prototype.constructor = personHigh;
+PersonHigh.prototype = Object.create(Person.prototype);
+PersonHigh.prototype.constructor = PersonHigh;
 
 
-const per2 = new personHigh('p2', 20, false, 180);
-console.log(per2 instanceof person); // true
-console.log(per2 instanceof personHigh); // true
+const per2 = new PersonHigh('p2', 20, false, 180);
+console.log(per2 instanceof Person); // true
+console.log(per2 instanceof PersonHigh); //true
 
 
 /**
@@ -85,7 +87,7 @@ console.log(per2 instanceof personHigh); // true
  * Nếu bạn bổ sung thuộc tính hay phương thức.
  */
 
-function Connguoi(name, age) {
+function ConNguoi(name, age) {
     this.name = name;
     this.age = age;
 }
@@ -94,8 +96,8 @@ const nam = new Connguoi(
     "nam", 30
 );
 // Thêm thuộc tính
-Connguoi.prototype.male = true;
-Connguoi.prototype.getInfo = function () {
+ConNguoi.prototype.male = true;
+ConNguoi.prototype.getInfo = function () {
     return this.name + " " + this.male;
 }
 console.log(nam);
