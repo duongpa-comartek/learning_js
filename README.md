@@ -1,6 +1,6 @@
 # learning_js
 
-Javascript basic
+Javascript basic:
 - Floating point
 - So sánh null và undefined
 - So sánh == và ===
